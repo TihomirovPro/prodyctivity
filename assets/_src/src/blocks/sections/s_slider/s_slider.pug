@@ -1,0 +1,16 @@
+mixin cardItem(data)
+  .cards-item.swiper-slide(style=`background-color: ${data.bg}`)
+    h3.cards-item__title!=data.title
+    img(src="images/slider-"+data.img+".png" alt="")
+
+section.slider
+  .slider__wrap
+    .swiper-wrapper
+      +cardItem({ title: 'Продуктиватор', bg: '#1E1E1E', img: '1' })
+      +cardItem({ title: 'Таскинатор', bg: '#FF7450' , img: '2'})
+      +cardItem({ title: 'Балансиатор', bg: '#2953F3', img: '3'})
+      +cardItem({ title: 'Редко, но метко', bg: '#91EA00', img: '4' })
+      +cardItem({ title: 'Отложка-тревожка ', bg: '#FF739D', img: '5' })
+    .swiper-navigation
+      .swiper-button-prev: +svgMono('prev-arrow')
+      .swiper-button-next: +svgMono('next-arrow')

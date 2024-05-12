@@ -1,0 +1,148 @@
+//- миксин для создания масштабируемых элементов, чтобы поддерживать соотношение. @include responsive-ratio(16,9)
+@mixin responsive-ratio($x, $y, $pseudo: false) {
+  $padding: unquote(($y / $x) * 100 + "%");
+  @if $pseudo {
+    &:before {
+      @include pseudo($pos: relative);
+      width: 100%;
+      padding-top: $padding;
+    }
+  } @else {
+    padding-top: $padding;
+  }
+}
+
+//- breakpoints
+$p_xs: 360px;
+$p_sm: 576px;
+$p_md: 768px;
+$p_lg: 992px;
+$p_xl: 1200px;
+$p_xxl: 1440px;
+$p_xxxl: 1920px;
+
+//- @include media($p_md, $p_lg)
+@mixin media($from, $to) {
+  @if $from == min or $from == max {
+    @media only screen and (#{$from}-width: $to) {
+      @content;
+    }
+  } @else {
+    @media only screen and (min-width: $from) and (max-width: $to) {
+      @content;
+    }
+  }
+}
+
+//- breakpoints
+//- desktop
+//- @include desktop()
+@mixin desktop($from: min, $to: 0) {
+  @if $from == min {
+    @if $to == 0 {
+      $to: $p_xl;
+    }
+    @if ($to < $p_xl) {
+      @error "ERROR mixin desktop min: Параметр $to должен быть больше #{$p_xl}, указан #{$to}";
+    }
+    @include media($from, $to) {
+      @content;
+    }
+  } @else if $from == max {
+    @if $to == 0 {
+      $to: $p_xxxl;
+    }
+    @if ($to <= $p_xl) {
+      @error "ERROR mixin desktop max: Параметр $to должен быть больше #{$p_xl}, указан #{$to}";
+    }
+    @include media($from, ($to - 1)) {
+      @content;
+    }
+  } @else {
+    @if $from == 0 {
+      $from: $p_xl;
+    }
+    @if $to == 0 {
+      $to: $p_xxxl;
+    }
+    @if ($from < $p_xl) {
+      @error "ERROR mixin desktop: Параметр $to должен быть больше или равен #{$p_xl}, указан #{$from}";
+    }
+    @if ($to <= $p_xl) {
+      @error "ERROR mixin desktop: Параметр $to должен быть больше #{$p_xl}, указан #{$to}";
+    }
+    @if ($to <= $from) {
+      @error "ERROR mixin desktop: Параметр $from должен быть меньше $to.";
+    }
+    @include media($from, ($to - 1)) {
+      @content;
+    }
+  }
+}
+
+//- breakpoints
+//- tablet
+//- @include tablet()
+@mixin tablet($from: 0, $to: 0) {
+  @if $from == min {
+    @if $to == 0 {
+      $to: $p_md;
+    }
+    @if ($to < $p_md) or ($to >= $p_xl) {
+      @error "ERROR mixin tablet: Параметр $to должен быть больше или равен #{$p_md} и меньше #{$p_xl}, указан #{$to}";
+    }
+    @include media($from, $to) {
+      @content;
+    }
+  } @else if $from == max {
+    @if $to == 0 {
+      $to: $p_xl;
+    }
+    @if ($to <= $p_md) or ($to > $p_xl) {
+      @error "ERROR mixin tablet: Параметр $to должен быть больше #{$p_md} и меньше #{$p_xl}, указан #{$to}";
+    }
+    @include media($from, ($to - 1)) {
+      @content;
+    }
+  } @else {
+    @if $from == 0 {
+      $from: $p_md;
+    }
+    @if $to == 0 {
+      $to: $p_xl;
+    }
+    @if ($from < $p_md) {
+      @error "ERROR mixin tablet: Параметр $from должен быть больше или равен #{$p_md}, указан #{$from}";
+    }
+    @if ($to < $p_md) or ($to > $p_xl) {
+      @error "ERROR mixin tablet: Параметр $to должен быть больше или равен #{$p_md} и меньше #{$p_xl}, указан #{$to}";
+    }
+    @include media($from, ($to - 1)) {
+      @content;
+    }
+  }
+}
+
+//- breakpoints
+//- mobile
+//- @include mobile()
+@mixin mobile($from: max, $to: 0) {
+  @if $from == max {
+    @if $to == 0 {
+      $to: $p_md;
+    }
+    @if ($to > $p_md) {
+      @error "ERROR mixin mobile: Параметр $to должен быть меньше #{$p_md}, указан #{$to}";
+    }
+    @include media($from, ($to - 1)) {
+      @content;
+    }
+  } @else if $from == min {
+    @if ($to >= $p_md) {
+      @error "ERROR mixin mobile: Параметр $to должен быть меньше #{$p_md}, указан #{$to}";
+    }
+    @include media($from, $to) {
+      @content;
+    }
+  }
+}

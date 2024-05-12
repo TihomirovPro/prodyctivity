@@ -1,0 +1,19 @@
+// Variables
+@import "colors";
+@import "grid";
+@import "padding";
+@import "rounding";
+
+:root {
+  --scale: 100vw / 360;
+
+  @include tablet() {
+    --scale: 100vw / 768;
+  }
+  @include desktop() {
+    --scale: 100vw / 1920;
+  }
+
+  --layout-width: 1920px;
+  --transition: .2s;
+}

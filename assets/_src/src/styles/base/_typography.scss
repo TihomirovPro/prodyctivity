@@ -1,0 +1,262 @@
+.a-font {
+  @at-root [class*="a-font"] [class*="a-font"] {
+    display: inline-block;
+  }
+
+  &_banner {
+    font-size: scale(40);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -1.2px;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(118);
+      line-height: .9;
+      letter-spacing: -2.36px;
+    }
+  }
+  &_banner-text {
+    font-size: scale(14);
+    font-weight: 600;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(26);
+    }
+  }
+  &_h0 {
+    font-size: scale(44);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -.03em;
+    @media screen and (min-width: 768px) {
+      font-size: scale(68);
+      line-height: 1;
+    }
+    @media screen and (min-width: 1200px) {
+      font-size: scale(154);
+      line-height: .8;
+    }
+  }
+
+  @at-root h1,
+  &_h1 {
+    font-size: scale(38);
+    font-weight: 600;
+    line-height: 1.1;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(86);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+  }
+
+  &_h1-min {
+    font-size: scale(40);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(80);
+      letter-spacing: 0;
+      line-height: 1;
+    }
+  }
+
+  @at-root h2,
+  &_h2 {
+    font-size: scale(38);
+    font-weight: 600;
+    line-height: 1.1;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(86);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+  }
+
+  @at-root h3,
+  &_h3 {
+    font-size: scale(26);
+    font-weight: 600;
+    letter-spacing: 0;
+    line-height: 1.1;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(64);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+  }
+
+  @at-root h4,
+  &_h4 {
+    font-size: scale(24);
+    font-weight: 600;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(48);
+      letter-spacing: -.02em;
+      line-height: 1.1;
+    }
+  }
+
+  @at-root h5,
+  &_h5 {
+    font-size: scale(19);
+    font-weight: 600;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(38);
+      letter-spacing: 0;
+      line-height: 1.1;
+    }
+  }
+
+  @at-root h6,
+  &_h6 {
+    font-size: scale(17);
+    font-weight: 600;
+    letter-spacing: -.01em;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(26);
+      letter-spacing: 0;
+      line-height: 1.2;
+    }
+  }
+
+
+  &_xl {
+    font-size: scale(15);
+    font-weight: 500;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(23);
+      line-height: 1.3;
+    }
+  }
+
+  &_xl-m {
+    font-size: scale(15);
+    font-weight: 600;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(23);
+      line-height: 1.2;
+    }
+  }
+
+  &_l {
+    font-size: scale(14);
+    font-weight: 500;
+    line-height: 1.3;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(19);
+      line-height: 1.2;
+    }
+  }
+
+  &_l-m {
+    font-size: scale(14);
+    font-weight: 600;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(19);
+      line-height: 1.2;
+    }
+  }
+
+  &_m {
+    font-size: scale(13);
+    font-weight: 500;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(16);
+      line-height: 1.2;
+    }
+  }
+
+  &_m-m {
+    font-size: scale(13);
+    font-weight: 600;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(16);
+      line-height: 1.2;
+    }
+  }
+
+  &_s {
+    font-size: scale(12);
+    font-weight: 500;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(15);
+      line-height: 1.2;
+    }
+  }
+
+  &_s-m {
+    font-size: scale(12);
+    font-weight: 600;
+    line-height: 1.2;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(15);
+      line-height: 1.2;
+    }
+  }
+
+  &_xs {
+    font-size: scale(10);
+    font-weight: 500;
+    line-height: 1.3;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(14);
+      line-height: 1.2;
+    }
+  }
+
+  &_xs-m {
+    font-size: scale(10);
+    font-weight: 600;
+    line-height: 1.3;
+
+    @media screen and (min-width: 1200px) {
+      font-size: scale(14);
+      line-height: 1.2;
+    }
+  }
+
+  &_xxs {
+    @media screen {
+      font-size: scale(10);
+      font-weight: 500;
+      line-height: 1.3;
+    }
+  }
+  &_xxs-m {
+    @media screen {
+      font-size: scale(10);
+      font-weight: 600;
+      line-height: 1.3;
+    }
+  }
+
+}

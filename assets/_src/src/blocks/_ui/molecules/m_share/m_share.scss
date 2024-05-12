@@ -1,0 +1,40 @@
+.contacts {
+  padding: 50px 75px;
+  border-radius: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  @media screen and ( max-width: 1024px ) {
+    padding: 28px 35px;
+  }
+  @media screen and ( max-width: 767px ) {
+    flex-direction: column;
+  }
+  &__text {
+    font-family: "MailSans", sans-serif;
+    font-size: 40px;
+    font-weight: 500;
+    @media screen and ( max-width: 1024px ) {
+      font-size: 28px;
+    }
+    @media screen and ( max-width: 767px ) {
+      font-size: 20px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+  }
+  &__links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+  &__link {
+    svg {
+      width: 73px;
+      @media screen and ( max-width: 1024px ) {
+        width: 50px;
+      }
+    }
+  }
+}

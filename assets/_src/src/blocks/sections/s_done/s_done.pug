@@ -1,0 +1,53 @@
+-
+  const cards = [{
+    title: 'Создавали <br>новые заметки',
+    icon: 'pen',
+    link: 'Написать свою',
+    text: 'Создано заметок',
+    num: '1 540 586',
+    bg: '#BDDFFF'
+  },{
+    title: 'Придумывали <br>с&nbsp;нейросетью',
+    icon: 'stars',
+    link: 'Сгенерировать идеи',
+    text: 'Написано текстов',
+    num: '30 114',
+    bg: '#CECAFC'
+  },{
+    title: 'Любимый цвет заметок и событий — красный',
+    icon: 'palette',
+    link: 'Выбрать свой цвет',
+    text: '',
+    num: '',
+    bg: '#FFD1CB'
+  },{
+    title: 'Создавали напоминания и&nbsp;встречи',
+    icon: 'calendar',
+    link: 'Добавить важное в Календарь',
+    text: 'Создано встреч ',
+    num: '7 157 621',
+    bg: '#CFF1A3'
+  },{
+    title: 'Генерировали поздравления с&nbsp;днём рождения',
+    icon: 'stars',
+    link: 'Поздравить друзей',
+    text: 'Поздравлений написано',
+    num: '57 292',
+    bg: '#FAE3B5',
+    block: true
+  }]
+
+section.s-done.wrapper
+  h1.s-done__title Сколько всего успели сделать за год
+  .s-done__wrap
+    each card in cards
+      +blockItem({
+        title: card.title,
+        icon: card.icon,
+        link: card.link,
+        text: card.text,
+        num: card.num,
+        bg: card.bg,
+        block: card.block
+      })
+  +mShare()

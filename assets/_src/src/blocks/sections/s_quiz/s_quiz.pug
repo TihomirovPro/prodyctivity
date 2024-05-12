@@ -1,0 +1,122 @@
+-
+  const quiz = [{
+    question: 'Как проходит ваш типичный вечер пятницы?',
+    answers: ['Окукливаюсь на диване и смотрю сериальчики', 'Планирую следующую рабочую неделю', 'Сначала в ресторанчик, потом в барчик, потом на рейв', 'Провожу осознанную медитацию с поющими чашами', 'Я так устаю, что просто лежу лежа...']
+  }, {
+    question: 'Как вы принимаете трудные решения?',
+    answers: ['Я не боюсь трудных решений. Трудные решения боятся меня', 'Внимательно взвешу все «За» и «Против»', 'Подкину монетку и разберусь с последствиями', 'Если не получается решить быстро, попрошу совета', 'Я просто тихо посижу тут, пока эти сложные решения не уйдут']
+  }, {
+    question: 'Скоро отпуск! Что вы запланировали?',
+    answers: ['Я беру и еду в отпуск. Лучше по путёвке', 'Вот чек-лист вещей, вот список мест и кафе, вот билеты', 'Планирую совсем не работать — это отпуск', 'О, перелёт 4 часа, успею передать дела коллегам до отеля', 'Надеюсь, скоро — это завтра. Пора выбрать, куда едем!']
+  }, {
+    question: 'Вам легко придумать планы на выходные?',
+    answers: ['Я просыпаюсь и делаю то, что нужно делать в выходные', 'Хах! Вот мой список идей на выходные', 'Сегодня бар с коллегами, завтра день с семьёй', 'Придумать легко — а чтобы успеть, нужно постараться', 'Куда все — туда и я, плыву по течению']
+  }, {
+    question: 'Друг просит помочь с переездом — сегодня!',
+    answers: ['Беру и помогаю без вопросов. На меня можно положиться', 'Сначала сверюсь со своими планами — помогу, если смогу', 'Если получится сделать свои дела. У меня бассейн в это время!', 'У меня идея — нанимаю грузчиков, а мы с другом идём гулять', 'Ура, спасение! Мои дела всё равно как-то не идут уже']
+  }]
+
+  const quizResult = [{
+    title: 'Балансиата',
+    text: 'Вам удаётся и ударно работать, и отдыхать так, чтобы потом опять. Оцените наши идеи, как отдыхать и делать качественные перерывы',
+    bubble: 'Перерыв 5 минут!',
+    img: '1',
+    points: '0',
+    bg: '#3137F4',
+    backingСolor: '#FF7450'
+  }, {
+    title: 'Экшен-пёрсон',
+    text: 'Вы берёте и делаете — это круто. Но иногда берёте на себя слишком много. Запишите сделанное за день — это придаст сил',
+    bubble: 'Нечего выдумывать',
+    img: '2',
+    points: '5',
+    bg: '#252525',
+    backingСolor: '#9C64E6'
+  }, {
+    title: 'Решатор',
+    text: 'Вы успеваете всё. Точнее, всё, что нужно. А то, что не успеваете —просите сделать других. Как просить непринуждённо — расскажет шаблон с советами',
+    bubble: 'Это сделаю, это делегирую',
+    img: '3',
+    points: '10',
+    bg: '#9C64E6',
+    backingСolor: '#1F1F1F'
+  }, {
+    title: 'Планерио',
+    text: 'Вам всё по плечу, когда есть план — остальным остаётся только завидовать. На случаи, когда планы рушатся — сохраните чек-лист для заземления',
+    bubble: 'Не записали — забыли',
+    img: '4',
+    points: '15',
+    bg: '#FF739D',
+    backingСolor: '#3137F3'
+  }, {
+    title: 'Тик-так-всё',
+    text: 'Вы часто делаете всё в последний момент. Как же вы хороши в эти моменты! Вот шаблон для особых случаев прокрастинации',
+    bubble: 'Пусть поближе подойдут',
+    img: '5',
+    points: '20',
+    bg: '#F8714E',
+    backingСolor: '#3137F4'
+  }]
+
+mixin radio(data) 
+  label.quiz__answer
+    input(type="radio" name=data.name value=data.value) 
+    +svgMono('chek')
+    span!=data.text
+
+mixin quizItem(data)
+  .quiz__item.swiper-slide
+    .quiz__question!=data.question
+    each answer, idx in data.answers
+      +radio({text: answer, name: data.name, value: idx})
+
+section.quiz.wrapper
+  .quiz__wrap
+    .quiz__bubble1
+    .quiz__bubble
+
+    .quiz__slider
+      .swiper-wrapper
+        each item, idx in quiz
+          +quizItem({
+            question: item.question,
+            answers: item.answers,
+            name: `question_${idx}`,
+          })
+      .quiz__buttons
+        +aBtn({text: 'Дальше'}).quiz__btn--next
+        +aBtn({text: 'Предыдущий вопрос', style: 'grey'}).quiz__btn--prev
+        +aBtn({text: 'Узнать результат'}).quiz__btn--done
+        
+      .swiper-pagination
+
+  each result in quizResult
+    .quiz__result(
+      style=`
+        background-color: ${result.bg};
+        color: ${result.backingСolor};
+      `
+      data-result=result.points
+    )
+      .quiz__result-black-bubble!=result.bubble
+      .quiz__result-bubble
+
+      picture
+        source(media="(max-width: 430px)" srcset="images/"+result.img+"-sm.png")
+        img.quiz__result-img(src="images/"+result.img+".png" alt="")
+
+      .quiz__result-info
+        .quiz__result-title!=result.title
+        .quiz__result-text!=result.text
+
+      .quiz__result-buttons 
+        +aBtn({text: 'Читать советы', style: 'black'})
+        .contacts__result 
+          .contacts__result-text Поделиться
+          .contacts__result-links
+            a.contacts__result-link(href="#") 
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" fill="none"><g filter="url(#a)"><rect width="54.5" height="54.5" x=".8" y=".8" stroke="#fff" stroke-width="1.5" rx="27.3"/><path fill="#fff" d="M29.2 35.5c-8.1 0-13-5.6-13.2-15h4.1c.1 6.9 3.3 9.8 5.7 10.4V20.5h3.9v6c2.3-.3 4.7-3 5.5-6h3.9c-.6 3.7-3.3 6.4-5.1 7.5 1.8.9 4.9 3.2 6 7.5h-4.3c-.8-2.9-3-5-6-5.4v5.4h-.5Z"/></g><defs><filter id="a" width="96" height="96" x="-20" y="-20" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feGaussianBlur in="BackgroundImageFix" stdDeviation="10"/><feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_465_43723"/><feBlend in="SourceGraphic" in2="effect1_backgroundBlur_465_43723" result="shape"/></filter></defs></svg>
+            a.contacts__result-link(href="#") 
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" fill="none"><g filter="url(#a)"><rect width="54.5" height="54.5" x=".8" y=".8" stroke="#fff" stroke-width="1.5" rx="27.3"/><path fill="#fff" fill-rule="evenodd" d="M19.4 26.8 30 22.2c5.1-2.1 6.2-2.5 6.9-2.5.1 0 .5 0 .7.2l.3.5v.8c-.3 2.9-1.5 10-2.1 13.2-.3 1.4-.8 1.8-1.3 1.9-1 0-1.8-.7-2.9-1.4l-4-2.8c-1.9-1.2-.7-1.8.3-2.9.3-.3 5-4.6 5-5V24h-.4L25 29c-.8.5-1.4.8-2 .8-.7 0-2-.4-2.9-.7-1.2-.4-2-.6-2-1.2 0-.4.5-.7 1.4-1Z" clip-rule="evenodd"/></g><defs><filter id="a" width="96" height="96" x="-20" y="-20" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feGaussianBlur in="BackgroundImageFix" stdDeviation="10"/><feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_465_43726"/><feBlend in="SourceGraphic" in2="effect1_backgroundBlur_465_43726" result="shape"/></filter></defs></svg>
+            a.contacts__result-link(href="#") 
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 56 56" fill="none"><g filter="url(#a)"><rect width="54.5" height="54.5" x=".8" y=".8" stroke="#fff" stroke-width="1.5" rx="27.3"/><path fill="#fff" fill-rule="evenodd" d="M29.5 20.3a4.4 4.4 0 1 1 6.2 6.2l-1 1a.9.9 0 1 1-1.3-1.2l1-1a2.6 2.6 0 1 0-3.6-3.7L27.2 25c-1 1-1 2.7 0 3.7A.9.9 0 0 1 26 30a4.4 4.4 0 0 1 0-6.3l3.5-3.5Zm-.7 5.7c.3-.4.9-.4 1.3 0a4.4 4.4 0 0 1 0 6.2l-3.6 3.5a4.4 4.4 0 0 1-6.2-6.2l1.1-1.1a.9.9 0 1 1 1.3 1.2l-1.1 1.2a2.6 2.6 0 1 0 3.6 3.6l3.6-3.5c1-1 1-2.7 0-3.7a.9.9 0 0 1 0-1.2Z" clip-rule="evenodd"/></g><defs><filter id="a" width="96" height="96" x="-20" y="-20" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feFlood flood-opacity="0" result="BackgroundImageFix"/><feGaussianBlur in="BackgroundImageFix" stdDeviation="10"/><feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_465_43729"/><feBlend in="SourceGraphic" in2="effect1_backgroundBlur_465_43729" result="shape"/></filter></defs></svg>

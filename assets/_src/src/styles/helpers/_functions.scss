@@ -1,0 +1,7 @@
+@function rem($px) {
+  @return ($px / 16) + rem;
+}
+
+@function scale($px) {
+  @return calc(var(--scale) * #{$px});
+}

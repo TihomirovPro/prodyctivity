@@ -1,0 +1,18 @@
+// Скругления
+:root {
+  --border-radius_def: #{scale(12)};
+  @media screen and (min-width: 768px) {
+    --border-radius_def: #{scale(16)};
+  }
+
+  --border-radius_sec: #{scale(12)};
+  @media screen and (min-width: 1200px) {
+    --border-radius_sec: #{scale(16)};
+  }
+}
+
+@media screen {
+  .br-0 {
+    border-radius: 0;
+  }
+}

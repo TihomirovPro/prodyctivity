@@ -1,0 +1,52 @@
+.slider {
+  max-width: 1744px;
+  position: relative;
+  padding: 0 24px;
+  margin: 0 auto 92px;
+
+  .quiz--done & {
+    display: none;
+  }
+
+  @media screen and (max-width: 834px) {
+    margin-bottom: 136px;
+  }
+
+  @media screen and (max-width: 1280px) {
+    margin-bottom: 90px;
+  }
+
+  .cards-item {
+    z-index: 1;
+    position: relative;
+    display: block;
+    width: 284px;
+    height: 333px;
+    border-radius: 32px;
+    padding: 32px;
+    overflow: hidden;
+
+    @media screen and (min-width: 834px) {
+      width: 320px;
+      height: 408px;
+      border-radius: 36px;
+    }
+
+    &__title {
+      font-size: 30px;
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    img {
+      z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}

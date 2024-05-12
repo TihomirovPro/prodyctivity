@@ -1,0 +1,22 @@
+:root {
+  --gap_def: #{scale(8)}; // 8px
+  --gap_sec: #{scale(12)}; // 12px
+
+  @media screen and (min-width: 768px) {
+    --gap_def: #{scale(8)}; // 8px
+    --gap_sec: #{scale(12)}; // 12px
+  }
+
+  @media screen and (min-width: 1200px) {
+    --gap_def: #{scale(20)}; // 20px
+    --gap_sec: #{scale(20)}; // 20px
+  }
+}
+
+@for $i from 1 through 12 {
+  .grid-columns-#{$i} {
+    display: grid;
+    grid-gap: var(--gap_def);
+    grid-template-columns: repeat(#{$i}, 1fr);
+  }
+}

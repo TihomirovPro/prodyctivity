@@ -1,0 +1,4 @@
+mixin aBtn(data)
+  button.a-btn(
+    class!=data.style ? `a-btn--${data.style}` : ''
+  )&attributes(attributes)!=data.text

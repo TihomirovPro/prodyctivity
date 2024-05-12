@@ -1,0 +1,40 @@
+@mixin reset-padding() {
+  @media screen {
+    .px-0 {
+      padding-right: 0;
+      padding-left: 0;
+    }
+    .py-0 {
+      padding-top: 0;
+      padding-bottom: 0;
+    }
+    .pb-0 {
+      padding-bottom: 0;
+    }
+    .pt-0 {
+      padding-top: 0;
+    }
+  }
+}
+
+:root {
+  --padding_def: #{scale(12)};
+  @media screen and (min-width: 1200px) {
+    --padding_def: #{scale(24)};
+  }
+
+  --layout-v-padding: #{scale(20)};
+  --layout-h-padding: #{scale(12)};
+
+  @media screen and (min-width: 768px) {
+    --layout-v-padding: #{scale(20)};
+    --layout-h-padding: #{scale(16)};
+  }
+
+  @media screen and (min-width: 1200px) {
+    --layout-v-padding: #{scale(40)};
+    --layout-h-padding: #{scale(40)};
+  }
+}
+
+@include reset-padding();

@@ -1,0 +1,33 @@
+@function hexToRGB($hex) {
+  @return red($hex), green($hex), blue($hex);
+}
+
+// Цвета
+:root {
+  // Базовые цвета
+  --a-color_white: #fff;
+  --a-color_white_rgb: #{hexToRGB(#fff)};
+  --a-color_red: #ED131C;
+  --a-color_red_dark: #DE040D;
+  --a-color_dark: #1C1C1C;
+  --a-color_dark_rgb: #{hexToRGB(#1C1C1C)};
+
+  --a-color_black: #000000;
+  --a-color_grey_10: #F5F5F6;
+  --a-color_grey_20: #ECEDF0;
+  --a-color_grey_40: #E0E1E5;
+  --a-color_grey_40_rgb: #{hexToRGB(#E0E1E5)};
+  --a-color_grey_60: #CACACB;
+  --a-color_grey_80: #7E7F81;
+  --a-color_grey_100: #666666;
+  --a-color_grey_dark: #3a3a3a;
+
+  --a-color_yellow: #FAC800;
+  
+  //- Рейтинг
+  --a-color_rating-green: #0EA900;
+
+  //- Метро
+  --a-color_metro-green: #05A18F;
+  --a-color_metro-blue: #6983E2;
+}

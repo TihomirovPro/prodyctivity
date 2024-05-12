@@ -1,0 +1,29 @@
+@font-face {
+  font-family: 'Mazzard';
+  src: local('Mazzard M Medium'), local('Mazzard-M-Medium'), url('/assets/dist/fonts/MazzardM-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Mazzard';
+  src: local('Mazzard M SemiBold'), local('Mazzard-M-SemiBold'), url('/assets/dist/fonts/MazzardM-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "MailSans";
+  src: url("/assets/dist/fonts/MailSansRegular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "MailSans";
+  src: url("/assets/dist/fonts/MailSansMedium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+};

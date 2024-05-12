@@ -1,0 +1,13 @@
+ProjectTitle: SYNERGYRU
+
+PageList:
+  - file: main.html
+    ready: 100
+  - file: about.html
+    ready: 50
+  - file: abiturientam.html
+    ready: 100
+  - file: faculty.html
+    ready: 100
+  - file: levels.html
+    ready: 100
